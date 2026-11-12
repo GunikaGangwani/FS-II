@@ -1,0 +1,278 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #ec4899;
+  --primary-hover: #db2777;
+  --bg-color: #fff1f6;
+  --surface-color: #ffffff;
+  --text-primary: #4a2437;
+  --text-secondary: #a16b85;
+  --border-color: #f8cddd;
+
+  --status-pending: #e9a23b;
+  --status-publishing: #a78bfa;
+  --status-published: #36b98a;
+  --status-failed: #f16b83;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top left, #ffe0ed, transparent 40%),
+    linear-gradient(135deg, #fff5f8, #fce7f3, #fff0f6);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ec4899, #be78c9, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem;
+  letter-spacing: -1px;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .app-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+.form-section,
+.posts-section {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border-radius: 1.3rem;
+  padding: 2rem;
+  border: 1px solid #f9c9dc;
+  box-shadow: 0 10px 35px rgba(219, 39, 119, 0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-section:hover,
+.posts-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(219, 39, 119, 0.13);
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin-bottom: 1.5rem;
+  color: #a83269;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+label {
+  font-weight: 600;
+  color: #985572;
+  font-size: 0.9rem;
+}
+
+input,
+textarea {
+  background: #fff7fa;
+  border: 1px solid #f3c4d6;
+  color: var(--text-primary);
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #c49aaa;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #ec4899;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.12);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(219, 39, 119, 0.22);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #db2777, #be185d);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(219, 39, 119, 0.3);
+}
+
+.posts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.post-card {
+  background: #fff8fb;
+  border: 1px solid #f7d2e1;
+  border-radius: 1rem;
+  padding: 1.3rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.post-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 20px rgba(219, 39, 119, 0.1);
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.status-pending::before {
+  background-color: var(--status-pending);
+}
+
+.status-publishing::before {
+  background-color: var(--status-publishing);
+}
+
+.status-published::before {
+  background-color: var(--status-published);
+}
+
+.status-failed::before {
+  background-color: var(--status-failed);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.post-id {
+  color: var(--text-secondary);
+}
+
+.post-status {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 2rem;
+  background: #fce7f3;
+}
+
+.status-pending .post-status {
+  color: #b7791f;
+  background: #fff3d6;
+}
+
+.status-publishing .post-status {
+  color: #8060cb;
+  background: #eee8ff;
+}
+
+.status-published .post-status {
+  color: #16865e;
+  background: #dcfce9;
+}
+
+.status-failed .post-status {
+  color: #d63c62;
+  background: #ffe4eb;
+}
+
+.post-content {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  word-break: break-word;
+  color: #63364d;
+}
+
+.post-time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.no-posts {
+  color: #b98ba1;
+  text-align: center;
+  font-style: italic;
+  padding: 2rem 1rem;
+}
+
